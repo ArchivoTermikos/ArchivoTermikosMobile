@@ -1,12 +1,18 @@
 package com.termikos.archivotermikosmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +25,19 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            Intent cambio;
+            if (itemId == R.id.navequipo) {
+                cambio = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(cambio);
+            } else if (itemId == R.id.navaula) {
+                cambio = new Intent(MainActivity.this, AulasActivity.class);
+                startActivity(cambio);
+            }
+            return true;
         });
     }
 }
