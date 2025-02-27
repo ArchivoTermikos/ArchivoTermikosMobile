@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.navequipo) {
                 cambio = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(cambio);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             } else if (itemId == R.id.navaula) {
                 cambio = new Intent(MainActivity.this, AulasActivity.class);
                 startActivity(cambio);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
             return true;
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }
