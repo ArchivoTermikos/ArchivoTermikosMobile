@@ -1,5 +1,6 @@
 package com.termikos.archivotermikosmobile.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ public class AulasAdapter extends RecyclerView.Adapter<AulasAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.aulas_recyclerview_layout, null);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.aulas_recyclerview_layout, parent, false);
         return new ViewHolder(view);
     }
 
