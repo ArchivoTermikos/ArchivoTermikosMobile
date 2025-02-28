@@ -3,9 +3,9 @@ permissions:
   contents: write
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "carlos", "guille" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "carlos", "guille"  ]
 
 jobs:
   build:
