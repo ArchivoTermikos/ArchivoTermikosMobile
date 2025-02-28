@@ -1,12 +1,12 @@
 package com.termikos.archivotermikosmobile.model;
 
-public class IntegranteEquipo {
+public class ElementoTarjeta {
     private String title;
     private String subtitle;
     private int current;
     private int last;
 
-    public IntegranteEquipo(String title, String subtitle, int imageResId, int newImageResId) {
+    public ElementoTarjeta(String title, String subtitle, int imageResId, int newImageResId) {
         this.title = title;
         this.subtitle = subtitle;
         this.current = imageResId;

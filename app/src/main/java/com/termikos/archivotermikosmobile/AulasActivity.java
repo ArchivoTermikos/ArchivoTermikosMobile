@@ -1,5 +1,6 @@
 package com.termikos.archivotermikosmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,9 +12,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.termikos.archivotermikosmobile.adapters.AulasAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.termikos.archivotermikosmobile.adapters.CardAdapter;
+import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class AulasActivity extends AppCompatActivity {
@@ -32,15 +34,32 @@ public class AulasActivity extends AppCompatActivity {
             return insets;
         });
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        recyclerView = findViewById(R.id.recycler_view);
-
-        List<String> aulas = Arrays.asList(new String[]{"Aula 1", "Aula 2", "Aula 3"});
-        recyclerView.setAdapter(new AulasAdapter(aulas));
+        recyclerView = findViewById(R.id.recyclerAula);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //CardItem List of 3 classrooms
+        List<ElementoTarjeta> cardItemList = List.of(
+                new ElementoTarjeta("Aula 1","1ºBachillerato C",R.drawable.aula,R.drawable.aula),
+                new ElementoTarjeta("Aula 2", "4ºESO C",R.drawable.aula,R.drawable.aula),
+                new ElementoTarjeta("Aula 3", "Sala de padres",R.drawable.aula,R.drawable.aula)
+        );
+        recyclerView.setAdapter(new CardAdapter(cardItemList, this));
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomAula);
+        bottomNavigationView.setSelectedItemId(R.id.navaula);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            Intent cambio;
+            if (itemId == R.id.navinicio) {
+                cambio = new Intent(this, MainActivity.class);
+                startActivity(cambio);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            } else if (itemId == R.id.navequipo) {
+                cambio = new Intent(this, AboutActivity.class);
+                startActivity(cambio);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+            return true;
+        });
     }
     @Override
     public void finish() {

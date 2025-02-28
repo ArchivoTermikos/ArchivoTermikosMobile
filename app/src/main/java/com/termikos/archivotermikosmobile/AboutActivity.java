@@ -1,6 +1,5 @@
 package com.termikos.archivotermikosmobile;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.termikos.archivotermikosmobile.adapters.CardAdapter;
-import com.termikos.archivotermikosmobile.model.IntegranteEquipo;
+import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +34,16 @@ public class AboutActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<IntegranteEquipo> cardItemList = new ArrayList<>();
-        cardItemList.add(new IntegranteEquipo("Nieves Tejeda", "Profesora", R.drawable.nieves1, R.drawable.nieves2));
-        cardItemList.add(new IntegranteEquipo("Guillermo Baquero", "Backend PHP", R.drawable.guille1, R.drawable.guille2));
-        cardItemList.add(new IntegranteEquipo("Carlos Dominguez", "Backend PHP", R.drawable.carlosd1, R.drawable.carlosd2));
-        cardItemList.add(new IntegranteEquipo("Ivan Ruiz Alcalá", "Frontend HTML&CSS&JS", R.drawable.ivan1, R.drawable.ivan2));
-        cardItemList.add(new IntegranteEquipo("Manuel Lemus Gil", "Cálculo de variables", R.drawable.manu1, R.drawable.manu2));
-        cardItemList.add(new IntegranteEquipo("Carlos Cano", "Diseñador de presentacion", R.drawable.carlosc1, R.drawable.carlosc2));
-        cardItemList.add(new IntegranteEquipo("Raquel Ramirez", "Community Manager y memoria", R.drawable.raquel1, R.drawable.raquel2));
-        cardItemList.add(new IntegranteEquipo("Ramón Rodriguez", "Diseñador gráfico", R.drawable.ramon1, R.drawable.ramon2));
-        cardItemList.add(new IntegranteEquipo("David Guerrero", "Ayudante de proyecto", R.drawable.david1, R.drawable.david2));
+        List<ElementoTarjeta> cardItemList = new ArrayList<>();
+        cardItemList.add(new ElementoTarjeta("Nieves Tejeda", "Profesora", R.drawable.nieves1, R.drawable.nieves2));
+        cardItemList.add(new ElementoTarjeta("Guillermo Baquero", "Backend PHP", R.drawable.guille1, R.drawable.guille2));
+        cardItemList.add(new ElementoTarjeta("Carlos Dominguez", "Backend PHP", R.drawable.carlosd1, R.drawable.carlosd2));
+        cardItemList.add(new ElementoTarjeta("Ivan Ruiz Alcalá", "Frontend Web", R.drawable.ivan1, R.drawable.ivan2));
+        cardItemList.add(new ElementoTarjeta("Manuel Lemus Gil", "Cálculo de variables", R.drawable.manu1, R.drawable.manu2));
+        cardItemList.add(new ElementoTarjeta("Carlos Cano", "Diseñador de presentacion", R.drawable.carlosc1, R.drawable.carlosc2));
+        cardItemList.add(new ElementoTarjeta("Raquel Ramirez", "Community Manager y memoria", R.drawable.raquel1, R.drawable.raquel2));
+        cardItemList.add(new ElementoTarjeta("Ramón Rodriguez", "Diseñador gráfico", R.drawable.ramon1, R.drawable.ramon2));
+        cardItemList.add(new ElementoTarjeta("David Guerrero", "Ayudante de proyecto", R.drawable.david1, R.drawable.david2));
 
         CardAdapter adapter = new CardAdapter(cardItemList, this);
         recyclerView.setAdapter(adapter);

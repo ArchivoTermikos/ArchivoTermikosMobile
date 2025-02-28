@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.termikos.archivotermikosmobile.R;
-import com.termikos.archivotermikosmobile.model.IntegranteEquipo;
+import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
 
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
-    private List<IntegranteEquipo> cardItemList;
+    private List<ElementoTarjeta> cardItemList;
     private Context context;
 
-    public CardAdapter(List<IntegranteEquipo> cardItemList, Context context) {
+    public CardAdapter(List<ElementoTarjeta> cardItemList, Context context) {
         this.cardItemList = cardItemList;
         this.context = context;
     }
@@ -36,7 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
-        IntegranteEquipo cardItem = cardItemList.get(position);
+        ElementoTarjeta cardItem = cardItemList.get(position);
         holder.cardTitle.setText(cardItem.getTitle());
         holder.cardSubtitle.setText(cardItem.getSubtitle());
         holder.cardImage.setImageResource(cardItem.getCurrent());
