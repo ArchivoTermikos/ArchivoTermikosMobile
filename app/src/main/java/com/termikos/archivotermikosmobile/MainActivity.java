@@ -13,6 +13,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.termikos.archivotermikosmobile.controller.PHPAulaRetriever;
+
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+        Executors.newCachedThreadPool().execute(new PHPAulaRetriever());
     }
 
     @Override
