@@ -1,16 +1,14 @@
 package com.termikos.archivotermikosmobile.model;
 
 public class ElementoTarjeta {
-    private String title;
-    private String subtitle;
-    private int current;
-    private int last;
+    protected String title;
+    protected String subtitle;
+    protected int current;
 
-    public ElementoTarjeta(String title, String subtitle, int imageResId, int newImageResId) {
+    public ElementoTarjeta(String title, String subtitle, int current) {
         this.title = title;
         this.subtitle = subtitle;
-        this.current = imageResId;
-        this.last = newImageResId;
+        this.current = current;
     }
 
     public String getTitle() {
@@ -25,13 +23,4 @@ public class ElementoTarjeta {
         return current;
     }
 
-    public int change(){
-        int temp = current;
-        current = last;
-        last = temp;
-        return current;
-    }
-    public int getLast() {
-        return last;
-    }
 }

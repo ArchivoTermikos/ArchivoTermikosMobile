@@ -8,7 +8,7 @@
     android:background="@drawable/fondo"
     android:backgroundTint="#6A000000"
     android:backgroundTintMode="src_atop"
-    tools:context=".AulasActivity">
+    tools:context=".view.AulasActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomAula"

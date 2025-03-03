@@ -11,26 +11,30 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.termikos.archivotermikosmobile.R;
 import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
+import com.termikos.archivotermikosmobile.model.MiembroCard;
+import com.termikos.archivotermikosmobile.strategy.AbstractStrategy;
 
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
-    private List<ElementoTarjeta> cardItemList;
+    private List<? extends ElementoTarjeta> cardItemList;
     private Context context;
-
-    public CardAdapter(List<ElementoTarjeta> cardItemList, Context context) {
+    private AbstractStrategy strategy;
+    private int layout;
+    public CardAdapter(List<? extends ElementoTarjeta> cardItemList, Context context,int layout, AbstractStrategy strategy) {
         this.cardItemList = cardItemList;
         this.context = context;
+        this.layout = layout;
+        this.strategy = strategy;
     }
 
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.team_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         return new CardViewHolder(view);
     }
 
@@ -41,9 +45,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.cardSubtitle.setText(cardItem.getSubtitle());
         holder.cardImage.setImageResource(cardItem.getCurrent());
         holder.itemView.setOnClickListener(v -> {
-            Glide.with(context)
-                    .load(cardItem.change())
-                    .into(holder.cardImage);
+            strategy.onClick(context, cardItemList, position, holder);
         });
     }
 
@@ -54,7 +56,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView cardImage;
+        public ImageView cardImage;
         TextView cardTitle;
         TextView cardSubtitle;
 

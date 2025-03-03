@@ -8,7 +8,7 @@
     android:background="@drawable/fondo"
     android:backgroundTint="#6A000000"
     android:backgroundTintMode="src_atop"
-    tools:context=".MainActivity" >
+    tools:context=".view.MainActivity" >
 
     <ImageView
         android:id="@+id/imageView2"
@@ -23,15 +23,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="379dp"
-        android:layout_height="68dp"
+        android:layout_width="358dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/audiowide"
         android:shadowColor="#090808"
         android:text="ArchivoTermikos"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />

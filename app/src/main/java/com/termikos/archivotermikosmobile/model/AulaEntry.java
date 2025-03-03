@@ -17,6 +17,26 @@ public class AulaEntry {
         this.fechaHora = fechaHora;
     }
 
+    public float getTemperatura() {
+        return temperatura;
+    }
+
+    public float getHumedad() {
+        return humedad;
+    }
+
+    public int getCalidadAire() {
+        return calidadAire;
+    }
+
+    public int getGasesPeligrosos() {
+        return gasesPeligrosos;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
     @Override
     public String toString() {
         return "AulaEntry{" +
