@@ -2,6 +2,7 @@ package com.termikos.archivotermikosmobile.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,7 @@ public class PHPAulaRetriever implements Runnable {
     private RecyclerView recyclerView;
     private int aula;
     private Context context;
+    boolean check = true;
     public PHPAulaRetriever(RecyclerView recyclerView, int aula, Context context) {
         this.recyclerView = recyclerView;
         this.aula = aula;
@@ -55,7 +57,8 @@ public class PHPAulaRetriever implements Runnable {
                 sb.append(line);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Log.e("PHPAulaRetriever", "Error al conectar con la URL", e);
+            check = false;
         } finally {
             urlConnection.disconnect();
         }
@@ -78,7 +81,12 @@ public class PHPAulaRetriever implements Runnable {
         ElementoTarjeta gasesCard = new ElementoTarjeta("Gases Peligrosos", gasespeligrosos + " ppm", R.drawable.gasespeligrosos);
         ElementoTarjeta ultimaActualizacionCard = new ElementoTarjeta("Última Actualización", ultimaActualizacion.toString(), R.drawable.calendario);
 
-        List<ElementoTarjeta> cards = List.of(temperaturaCard, humedadCard, calidadAireCard, gasesCard, ultimaActualizacionCard);
+        List<ElementoTarjeta> cards;
+        if (!check) {
+            cards = List.of(new ElementoTarjeta("Error", "No se ha podido conectar con el servidor", R.drawable.cargando));
+        } else {
+            cards = List.of(temperaturaCard, humedadCard, calidadAireCard, gasesCard, ultimaActualizacionCard);
+        }
         ((Activity) context).runOnUiThread(() -> recyclerView.setAdapter(new CardAdapter(cards, context,R.layout.minicard, new EntryStrategy())));
     }
 }
