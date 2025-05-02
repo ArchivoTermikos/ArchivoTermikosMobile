@@ -38,14 +38,10 @@ public class AboutActivity extends AppCompatActivity {
 
         List<MiembroCard> cardItemList = new ArrayList<>();
         cardItemList.add(new MiembroCard("Nieves Tejeda", "Profesora", R.drawable.nieves1, R.drawable.nieves2));
-        cardItemList.add(new MiembroCard("Guillermo Baquero", "Backend PHP", R.drawable.guille1, R.drawable.guille2));
-        cardItemList.add(new MiembroCard("Carlos Dominguez", "Backend PHP", R.drawable.carlosd1, R.drawable.carlosd2));
+        cardItemList.add(new MiembroCard("Guillermo Baquero", "Backend PHP, Android", R.drawable.guille1, R.drawable.guille2));
+        cardItemList.add(new MiembroCard("Carlos Dominguez", "Backend PHP, Android", R.drawable.carlosd1, R.drawable.carlosd2));
         cardItemList.add(new MiembroCard("Ivan Ruiz Alcalá", "Frontend Web", R.drawable.ivan1, R.drawable.ivan2));
-        cardItemList.add(new MiembroCard("Manuel Lemus Gil", "Cálculo de variables", R.drawable.manu1, R.drawable.manu2));
-        cardItemList.add(new MiembroCard("Carlos Cano", "Diseñador de presentacion", R.drawable.carlosc1, R.drawable.carlosc2));
-        cardItemList.add(new MiembroCard("Raquel Ramirez", "Community Manager y memoria", R.drawable.raquel1, R.drawable.raquel2));
-        cardItemList.add(new MiembroCard("Ramón Rodriguez", "Diseñador gráfico", R.drawable.ramon1, R.drawable.ramon2));
-        cardItemList.add(new MiembroCard("David Guerrero", "Ayudante de proyecto", R.drawable.david1, R.drawable.david2));
+        cardItemList.add(new MiembroCard("Raquel Ramirez", "Community Manager", R.drawable.raquel1, R.drawable.raquel2));
 
         CardAdapter adapter = new CardAdapter(cardItemList, this,R.layout.team_card, new EquipoStrategy());
         recyclerView.setAdapter(adapter);

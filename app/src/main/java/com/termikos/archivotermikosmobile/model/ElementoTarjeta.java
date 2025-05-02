@@ -1,10 +1,11 @@
 package com.termikos.archivotermikosmobile.model;
 
+import com.termikos.archivotermikosmobile.strategy.recomendaciones.RecomendacionStrategy;
+
 public class ElementoTarjeta {
     protected String title;
     protected String subtitle;
     protected int current;
-
     public ElementoTarjeta(String title, String subtitle, int current) {
         this.title = title;
         this.subtitle = subtitle;

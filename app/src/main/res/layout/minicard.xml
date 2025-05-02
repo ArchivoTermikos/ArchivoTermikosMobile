@@ -17,8 +17,8 @@
             android:id="@+id/card_image"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/nieves1" />
 
         <LinearLayout
@@ -44,5 +44,16 @@
                 android:text="Subtítulo"
                 android:textSize="12sp" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/info"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_gravity="right"
+        android:layout_weight="1"
+        android:paddingRight="6dp"
+        app:srcCompat="@drawable/info" />
+
 </androidx.cardview.widget.CardView>

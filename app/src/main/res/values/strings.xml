@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">ArchivoTermikosMobile</string>
+    <string name="app_name" translatable="false">ArchivoTermikosMobile</string>
+    <string name="temperaturaLT19">Menor a 19 grados centígrados, cerrar ventanas y apagar radiadores</string>
+    <string name="temperaturaGT25">Mayor que 25 grados centígrados, abrir ventanas y apagar radiadores</string>
+    <string name="temperaturaDEF">Entre 19 y 25 grados centígrados, estado óptimo</string>
+    <string name="humedadLT45">Menor a 45%, poca humedad</string>
+    <string name="humedadGT60">Mayor que 60%, mucha humedad</string>
+    <string name="humedadDEF">Entre 45% y 60%, estado óptimo</string>
+    <string name="gasesLT30">Ideales</string>
+    <string name="gasesLT80">Valores normales</string>
+    <string name="gasesLT150">Aceptables, ventilación opcional durante</string>
+    <string name="gasesLT300">Malos, ventilacion sugerida durante</string>
+    <string name="gasesGT300">Niveles peligrosos, ventilacion urgente</string>
+    <string name="calLT200">Ideal</string>
+    <string name="calLT400">Recomendable</string>
+    <string name="calLT1000">Aceptable, ventilación sugerida</string>
+    <string name="calLT2000">Mala, ventilacion inmediata</string>
+    <string name="calGT2000">Peligrosa, ventilacion urgente</string>
 </resources>

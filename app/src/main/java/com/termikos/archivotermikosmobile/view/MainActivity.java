@@ -2,6 +2,7 @@ package com.termikos.archivotermikosmobile.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.termikos.archivotermikosmobile.R;
-import com.termikos.archivotermikosmobile.controller.PHPAulaRetriever;
 
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 

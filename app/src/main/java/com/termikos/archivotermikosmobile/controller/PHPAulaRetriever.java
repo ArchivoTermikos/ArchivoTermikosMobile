@@ -9,10 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.termikos.archivotermikosmobile.R;
 import com.termikos.archivotermikosmobile.adapters.CardAdapter;
+import com.termikos.archivotermikosmobile.adapters.CardAdapterData;
 import com.termikos.archivotermikosmobile.model.Aula;
 import com.termikos.archivotermikosmobile.model.AulaEntry;
 import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
+import com.termikos.archivotermikosmobile.model.ElementoTarjetaDato;
 import com.termikos.archivotermikosmobile.strategy.EntryStrategy;
+import com.termikos.archivotermikosmobile.strategy.recomendaciones.RecomendacionStrategyAire;
+import com.termikos.archivotermikosmobile.strategy.recomendaciones.RecomendacionStrategyGases;
+import com.termikos.archivotermikosmobile.strategy.recomendaciones.RecomendacionStrategyHumedad;
+import com.termikos.archivotermikosmobile.strategy.recomendaciones.RecomendacionStrategyTemperatura;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,6 +39,7 @@ public class PHPAulaRetriever implements Runnable {
     private int aula;
     private Context context;
     boolean check = true;
+
     public PHPAulaRetriever(RecyclerView recyclerView, int aula, Context context) {
         this.recyclerView = recyclerView;
         this.aula = aula;
@@ -75,11 +82,15 @@ public class PHPAulaRetriever implements Runnable {
         int gasespeligrosos = gasesElement != null ? Integer.parseInt(gasesElement.text().split(" ")[0]) : 0;
         LocalDateTime ultimaActualizacion = updateElement != null ? LocalDateTime.parse(updateElement.text().replace(" ", "T")) : LocalDateTime.now();
 
-        ElementoTarjeta temperaturaCard = new ElementoTarjeta("Temperatura", temperatura + " ºC", R.drawable.temperatura);
-        ElementoTarjeta humedadCard = new ElementoTarjeta("Humedad", humedad + " %", R.drawable.humedad);
-        ElementoTarjeta calidadAireCard = new ElementoTarjeta("Calidad del Aire", calidadaire + " ppm", R.drawable.aire);
-        ElementoTarjeta gasesCard = new ElementoTarjeta("Gases Peligrosos", gasespeligrosos + " ppm", R.drawable.gasespeligrosos);
-        ElementoTarjeta ultimaActualizacionCard = new ElementoTarjeta("Última Actualización", ultimaActualizacion.toString(), R.drawable.calendario);
+        String[] recomendacionesTemperatura = new String[]{context.getString(R.string.temperaturaLT19), context.getString(R.string.temperaturaGT25), context.getString(R.string.temperaturaDEF)};
+        String[] recomendacionesHumedad = new String[]{context.getString(R.string.humedadLT45), context.getString(R.string.humedadGT60), context.getString(R.string.humedadDEF)};
+        String[] recomendacionesCalidadAire = new String[]{context.getString(R.string.calLT200), context.getString(R.string.calLT400), context.getString(R.string.calLT1000), context.getString(R.string.calLT2000), context.getString(R.string.calGT2000)};
+        String[] recomendacionesGases = new String[]{context.getString(R.string.gasesLT30), context.getString(R.string.gasesLT80), context.getString(R.string.gasesLT150), context.getString(R.string.gasesLT300), context.getString(R.string.gasesGT300)};
+        ElementoTarjeta temperaturaCard = new ElementoTarjetaDato("Temperatura", temperatura + " ºC", R.drawable.temperatura, recomendacionesTemperatura, new RecomendacionStrategyTemperatura());
+        ElementoTarjeta humedadCard = new ElementoTarjetaDato("Humedad", humedad + " %", R.drawable.humedad, recomendacionesHumedad, new RecomendacionStrategyHumedad());
+        ElementoTarjeta calidadAireCard = new ElementoTarjetaDato("Calidad del Aire", calidadaire + " ppm", R.drawable.aire, recomendacionesCalidadAire, new RecomendacionStrategyAire());
+        ElementoTarjeta gasesCard = new ElementoTarjetaDato("Gases Peligrosos", gasespeligrosos + " ppm", R.drawable.gasespeligrosos, recomendacionesGases, new RecomendacionStrategyGases());
+        ElementoTarjeta ultimaActualizacionCard = new ElementoTarjeta("Última Actualización", ultimaActualizacion.toString().replace("T", "   "), R.drawable.calendario);
 
         List<ElementoTarjeta> cards;
         if (!check) {
@@ -87,6 +98,8 @@ public class PHPAulaRetriever implements Runnable {
         } else {
             cards = List.of(temperaturaCard, humedadCard, calidadAireCard, gasesCard, ultimaActualizacionCard);
         }
-        ((Activity) context).runOnUiThread(() -> recyclerView.setAdapter(new CardAdapter(cards, context,R.layout.minicard, new EntryStrategy())));
+        cards.forEach(System.out::println);
+        System.out.println("aaaaaa");
+        ((Activity) context).runOnUiThread(() -> recyclerView.setAdapter(new CardAdapterData(cards, context, R.layout.minicard, new EntryStrategy())));
     }
 }
