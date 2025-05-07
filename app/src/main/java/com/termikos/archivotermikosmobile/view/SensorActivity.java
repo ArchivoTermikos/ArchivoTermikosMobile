@@ -39,7 +39,9 @@ public class SensorActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerDatos);
         int elemento = getIntent().getIntExtra("elemento", 0);
+        //Recogemos los datos enviados por la placa de forma asíncrona
         Executors.newCachedThreadPool().execute(new PHPAulaRetriever(recyclerView,elemento,this));
+
         int imagen = getIntent().getIntExtra("imagen", R.drawable.aula);
         String nombre = getIntent().getStringExtra("nombre");
         ImageView imageView = findViewById(R.id.imagenClase);
@@ -47,6 +49,10 @@ public class SensorActivity extends AppCompatActivity {
         TextView nombreAula = findViewById(R.id.nombreAula);
         nombreAula.setText(nombre);
         setTitle("Aula "+elemento);
+        /*
+            Por defecto lo que se muestra es un elemento temporal durante la carga
+            de los datos, cuando el proceso en el hilo secundario ha terminado actualiza la lista de datos
+        */
         List<ElementoTarjeta> elementos = List.of(new ElementoTarjeta("Cargando", "Puede tardar un poco", R.drawable.cargando));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new CardAdapter(elementos, this,R.layout.minicard, new EntryStrategy()));

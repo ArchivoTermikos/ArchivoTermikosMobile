@@ -41,7 +41,6 @@ public class AboutActivity extends AppCompatActivity {
         cardItemList.add(new MiembroCard("Guillermo Baquero", "Backend PHP, Android", R.drawable.guille1, R.drawable.guille2));
         cardItemList.add(new MiembroCard("Carlos Dominguez", "Backend PHP, Android", R.drawable.carlosd1, R.drawable.carlosd2));
         cardItemList.add(new MiembroCard("Ivan Ruiz Alcalá", "Frontend Web", R.drawable.ivan1, R.drawable.ivan2));
-        cardItemList.add(new MiembroCard("Raquel Ramirez", "Community Manager", R.drawable.raquel1, R.drawable.raquel2));
 
         CardAdapter adapter = new CardAdapter(cardItemList, this,R.layout.team_card, new EquipoStrategy());
         recyclerView.setAdapter(adapter);

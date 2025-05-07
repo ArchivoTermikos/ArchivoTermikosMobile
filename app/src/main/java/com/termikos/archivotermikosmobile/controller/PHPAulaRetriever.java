@@ -4,14 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.termikos.archivotermikosmobile.R;
-import com.termikos.archivotermikosmobile.adapters.CardAdapter;
 import com.termikos.archivotermikosmobile.adapters.CardAdapterData;
-import com.termikos.archivotermikosmobile.model.Aula;
-import com.termikos.archivotermikosmobile.model.AulaEntry;
 import com.termikos.archivotermikosmobile.model.ElementoTarjeta;
 import com.termikos.archivotermikosmobile.model.ElementoTarjetaDato;
 import com.termikos.archivotermikosmobile.strategy.EntryStrategy;
